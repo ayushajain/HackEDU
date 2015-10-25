@@ -6,7 +6,12 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 (function($) {
 	var ref = new Firebase("https://hackedu.firebaseio.com/");
-	var currentKey = "";
+	var currentKey = "a";
+	//load question
+	var options = [1,2,3,4];
+	var questions;
+	var currentQuestion = 1;
+
 
 	$("#upload-file").click(function(){
 		$("#file-input").click();
@@ -20,16 +25,20 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 		if(snapshot.key() == currentKey){
 			$("#rawtext").text(snapshot.val().raw);
 			$("#summarytext").text(snapshot.val().summ);
+			console.log(currentKey)
+
+			ref.child('finished').child(currentKey).on('value', function(snapshot){
+				if(snapshot.hasChild('questions')){
+					console.log("yayayyayayy")
+					ref.child('finished').child(currentKey).child('questions').once('value', function(snapshot){
+						questions = snapshot.val();
+						console.log(snapshot.val() + ", " + questions);
+						loadQuestion(1);
+					});
+				}
+			});
 		}
 	});
-
-
-	//load question
-	var options = [1,2,3,4];
-	var questions;
-	var currentQuestion = 1;
-
-
 
 	$(".answers").click(function(){
 
@@ -89,6 +98,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 		}
 		return array;
 	}
+
 
 	skel.breakpoints({
 		wide: '(max-width: 1680px)',
