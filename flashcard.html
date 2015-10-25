@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<!--
+    Twenty by HTML5 UP
+    html5up.net | @n33co
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Replace with app name: AppName_ -->
+	<head>
+		<title>Scribe</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
+		<link rel="stylesheet" href="assets/css/main.css" />
+    </head>
+    <body class="index">
+    	<div id="page-wrapper">
+    		<!-- Header -->
+    		<header id="header" class="alt">
+    			<h1 id="logo"><a href="index.html">Scribe<span>— Note summarizer</span></a></h1>
+    			<nav id="nav">
+    				<ul>
+					<li>
+    					<button id="upload-file" class="button special">Upload</button>
+    				</li>
+                    <li>
+                    	<button href="viewnotes.html" class="button special">View Notes</button></li>
+                    </ul>
+                </nav>
+            </header>
+            <section id="banner"></section>
+			<section id="flashcards">
+    			<div class="flashcard" id="quiz">
+    				<div class="answers">
+						<h2 id="question">Question goes here.</h2>
+						<div class="answer" >
+							<button id="1" class="answers button choice" form="user-answers"></button>
+						</div><br>
+						<div class="answer" >
+							<button id="2" class="answers button choice" form="user-answers"></button>
+						</div><br>
+						<div class="answer" >
+							<button id="3" class="answers button choice" form="user-answers"></button>
+						</div><br>
+						<div class="answer">
+							<button id="4" class="answers button choice" form="user-answers"></button>
+						</div>
+                        <span class="prompt"></span><br class="fill">
+    				</div>
+    			</div>
+				<div class="flashcard" id="summary">
+					<h3>Summarized Text</h3>
+    				<center><p id="summarytext"><p></center>
+    			</div>
+				<div class="flashcard" id="raw">
+					<h3>RAW Text from Source</h3>
+    				<center><p id="rawtext"><p></center>
+    			</div>
+            </section>
+			<input type="file" id="file-input">
+        </div>
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.dropotron.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/jquery.scrollgress.min.js"></script>
+        <script src="assets/js/skel.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="assets/js/main.js"></script>
+
+        <script src="assets/js/bootstrap.min.js"></script>
+    </body>
+</html>
