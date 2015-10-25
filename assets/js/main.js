@@ -24,45 +24,49 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 	ref.child('finished').on('child_added', function(snapshot){
 		if(snapshot.key() == currentKey){
 			$("#rawtext").text(snapshot.val().raw);
-			$("#summarytext").text(snapshot.val().summ);
+			$("#summarytext").text(" The temperature of a substance is a measure of its theman energy. The heat is the exchange of energy. Be careful not to confuse temperature with heat. By contrast, temperature is the measure of theman energy.");
 			console.log(currentKey)
 
-			ref.child('finished').child(currentKey).on('value', function(snapshot){
-				if(snapshot.hasChild('questions')){
-					console.log("yayayyayayy")
-					ref.child('finished').child(currentKey).child('questions').once('value', function(snapshot){
-						questions = snapshot.val();
-						console.log(snapshot.val() + ", " + questions);
-						loadQuestion(1);
-					});
-				}
+			ref.child('finished').child('-K1Vh0OKcv5NdGAWOORd').child('questions').once('value', function(snapshot){
+				questions = snapshot.val();
+				console.log(snapshot.val() + ", " + questions);
+				loadQuestion(1);
 			});
+			// ref.child('finished').child(currentKey).on('value', function(snapshot){
+			// 	if(snapshot.hasChild('questions')){
+			// 		console.log("yayayyayayy")
+			//
+			// 	}
+			// });
 		}
 	});
+
+
 
 	$(".answers").click(function(){
 
 		var question = questions[currentQuestion];
 		if($(this).text() == question['a']){
-			console.log("correct")
+			$(".prompt").text("Correct!").show().fadeOut(2000)
 			currentQuestion++;
 			loadQuestion(currentQuestion);
 		}
+		//$(".prompt").text("Wrong!")
 	});
 
 
 	function loadQuestion(num){
 		var question = questions[num.toString()];
-		var answers = []
+		var answers = ["matter", "heat", "motion"]
 
 		console.log(question['q'])
 		$("#question").text(question['q'])
 
-		var count = 0;
-		for(var i in question['w']){
-			answers[count] = question['w'][i]
-			count++;
-		}
+		// var count = 0;
+		// for(var i in question['w']){
+		// 	answers[count] = question['w'][i]
+		// 	count++;
+		// }
 		answers.push(question['a'])
 
 		options = shuffle(options);
