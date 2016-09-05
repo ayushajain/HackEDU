@@ -166,7 +166,7 @@ function finalize(selectedKeys, selectedSentences, taggedSentences) {
         var answers = generateDistractors(keys[j]);
 
         finalArr.push(question);
-        finalArr.push(answers[keyleco]);
+        finalArr.push(answers[0]);
 
 
     }
